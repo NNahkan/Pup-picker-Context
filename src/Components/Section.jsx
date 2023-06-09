@@ -1,3 +1,5 @@
+import { useDogs } from "../Provider/DogsProvider";
+
 //! Get rid of all props except 'children' and 'label'
 export const Section = ({
   label, // do not delete
@@ -9,10 +11,11 @@ export const Section = ({
   favoriteDogCount,
   unfavoriteDogCount,
 }) => {
+  const { name } = useDogs();
   return (
     <section>
       <div className="container-header">
-        <div className="container-label">{label}</div>
+        <div className="container-label">{label} burada {name}</div>
         <div className="selectors">
           {/* This should display the favorited count */}
           <div

@@ -7,6 +7,7 @@ import "./fonts/RubikBubbles-Regular.ttf";
 import { addDogToDb } from "./fetch/add-dog";
 import { updateFavoriteForDog } from "./fetch/update-favorite";
 import { deleteDogFromDb } from "./fetch/delete-dog-from-db";
+import { DogsProvider, useDogs } from "./Provider/DogsProvider";
 
 function App() {
   const [showComponent, setShowComponent] = useState("all-dogs");
@@ -89,30 +90,32 @@ function App() {
       <header>
         <h1>pup-e-picker</h1>
       </header>
-      <Section
-        label={"Dogs: "}
-        onClickFavorited={onClickFavorited}
-        onClickUnfavorited={onClickUnfavorited}
-        onClickCreateDog={onClickCreateDog}
-        showComponent={showComponent}
-        favoriteDogCount={favorited.length}
-        unfavoriteDogCount={unfavorited.length}
-      >
-        {["all-dogs", "favorite-dogs", "unfavorite-dogs"].includes(
-          showComponent
-        ) && (
-          <Dogs
-            label={"All Dogs"}
-            dogs={filteredDogs}
-            unfavoriteDog={unfavoriteDog}
-            deleteDog={deleteDog}
-            favoriteDog={favoriteDog}
-          />
-        )}
-        {showComponent === "create-dog-form" && (
-          <CreateDogForm addDog={addDog} />
-        )}
-      </Section>
+      <DogsProvider>
+        <Section
+          label={"Dogs: "}
+          onClickFavorited={onClickFavorited}
+          onClickUnfavorited={onClickUnfavorited}
+          onClickCreateDog={onClickCreateDog}
+          showComponent={showComponent}
+          favoriteDogCount={favorited.length}
+          unfavoriteDogCount={unfavorited.length}
+        >
+          {["all-dogs", "favorite-dogs", "unfavorite-dogs"].includes(
+            showComponent
+          ) && (
+            <Dogs
+              label={"All Dogs"}
+              dogs={filteredDogs}
+              unfavoriteDog={unfavoriteDog}
+              deleteDog={deleteDog}
+              favoriteDog={favoriteDog}
+            />
+          )}
+          {showComponent === "create-dog-form" && (
+            <CreateDogForm addDog={addDog} />
+          )}
+        </Section>
+      </DogsProvider>
     </div>
   );
 }
