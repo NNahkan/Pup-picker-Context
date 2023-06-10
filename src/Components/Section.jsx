@@ -4,18 +4,27 @@ import { useDogs } from "../Provider/DogsProvider";
 export const Section = ({
   label, // do not delete
   children, // do not delete
-  onClickFavorited,
-  onClickUnfavorited,
-  onClickCreateDog,
-  showComponent,
-  favoriteDogCount,
-  unfavoriteDogCount,
 }) => {
-  const { name } = useDogs();
+  const {
+    onClickFavorited,
+    onClickUnfavorited,
+    onClickCreateDog,
+    showComponent,
+    unfavoriteDog,
+    favoriteDog,
+  } = useDogs();
+
+  const [favoriteDogCount, unfavoriteDogCount] = [
+    favoriteDog.length,
+    unfavoriteDog.length,
+  ];
+
   return (
     <section>
       <div className="container-header">
-        <div className="container-label">{label} burada {name}</div>
+        <div className="container-label">
+          {label} burada {name}
+        </div>
         <div className="selectors">
           {/* This should display the favorited count */}
           <div

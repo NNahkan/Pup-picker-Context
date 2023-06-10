@@ -18,22 +18,15 @@
       "name": "Juanita",
       "image": "/src/assets/dalmation.png",
       "description": "redefine online feed bus unaccountably Hybrid Turnpike",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 9
     },
     {
       "name": "Laurine",
       "image": "/src/assets/corgi.png",
       "description": "Sausages pfft Rolls navigating male",
-      "isFavorite": true,
-      "id": 18
-    },
-    {
-      "name": "Jim",
-      "description": "Jim is a dog, a very cute dog",
       "isFavorite": false,
-      "image": "/src/assets/chihuahua.avif",
-      "id": 20
+      "id": 18
     }
   ]
 }
