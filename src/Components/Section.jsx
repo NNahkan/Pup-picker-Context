@@ -10,21 +10,21 @@ export const Section = ({
     onClickUnfavorited,
     onClickCreateDog,
     showComponent,
-    unfavoriteDog,
-    favoriteDog,
+    unfavorited,
+    favorited,
   } = useDogs();
 
   const [favoriteDogCount, unfavoriteDogCount] = [
-    favoriteDog.length,
-    unfavoriteDog.length,
+    favorited.length,
+    unfavorited.length,
   ];
 
+  //   const unfavoriteDogCount = unfavorited.length;
+  //   const favoriteDogCount = favorited.length;
   return (
     <section>
       <div className="container-header">
-        <div className="container-label">
-          {label} burada {name}
-        </div>
+        <div className="container-label">{label}</div>
         <div className="selectors">
           {/* This should display the favorited count */}
           <div

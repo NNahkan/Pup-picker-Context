@@ -8,8 +8,7 @@ export const CreateDogForm = () => {
   const [descriptionInput, setDescriptionInput] = useState(""); //! This state must stay, don't try and move it to context
   const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler); //! This state must stay, don't try and move it to context
 
-  const { showComponent, addNewDog } = useDogs();
-  console.log(addNewDog, "aa", showComponent);
+  const { showComponent, addDog } = useDogs();
   return (
     <>
       {showComponent === "create-dog-form" && (

@@ -93,6 +93,8 @@ export const DogsProvider = ({ children }) => {
         deleteDog,
         unfavoriteDog,
         favoriteDog,
+        unfavorited,
+        favorited,
       }}
     >
       {children}
