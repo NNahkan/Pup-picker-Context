@@ -25,22 +25,29 @@ export const DogsProvider = ({ children }) => {
     });
   };
 
-  const deleteDog = (dogId) => {
-    deleteDogFromDb(dogId).then(() => refetchDogs());
-  };
-
   const unfavoriteDog = (dogId) => {
     updateFavoriteForDog({ dogId, isFavorite: false }).then(() =>
       refetchDogs()
     );
   };
 
+  const deleteDog = (dogId) => {
+    deleteDogFromDb(dogId).then(() => refetchDogs());
+  };
   const favoriteDog = (dogId) => {
     updateFavoriteForDog({ dogId, isFavorite: true }).then(() => refetchDogs());
   };
 
   const unfavorited = dogs.filter((dog) => dog.isFavorite === false);
   const favorited = dogs.filter((dog) => dog.isFavorite === true);
+
+  const onClickFavorited = () => {
+    if (showComponent === "favorite-dogs") {
+      setShowComponent("all-dogs");
+      return;
+    }
+    setShowComponent("favorite-dogs");
+  };
 
   let filteredDogs = (() => {
     if (showComponent === "favorite-dogs") {
@@ -53,28 +60,19 @@ export const DogsProvider = ({ children }) => {
     return dogs;
   })();
 
-  const onClickFavorited = () => {
-    if (showComponent === "favorite-dogs") {
-      setShowComponent("all-dogs");
-      return;
-    }
-    setShowComponent("favorite-dogs");
-  };
-
-  const onClickUnfavorited = () => {
-    if (showComponent === "unfavorite-dogs") {
-      setShowComponent("all-dogs");
-      return;
-    }
-    setShowComponent("unfavorite-dogs");
-  };
-
   const onClickCreateDog = () => {
     if (showComponent === "create-dog-form") {
       setShowComponent("all-dogs");
       return;
     }
     setShowComponent("create-dog-form");
+  };
+  const onClickUnfavorited = () => {
+    if (showComponent === "unfavorite-dogs") {
+      setShowComponent("all-dogs");
+      return;
+    }
+    setShowComponent("unfavorite-dogs");
   };
 
   useEffect(() => {
@@ -93,8 +91,8 @@ export const DogsProvider = ({ children }) => {
         deleteDog,
         unfavoriteDog,
         favoriteDog,
-        unfavorited,
         favorited,
+        unfavorited,
       }}
     >
       {children}

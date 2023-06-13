@@ -18,9 +18,7 @@ export const Section = ({
     favorited.length,
     unfavorited.length,
   ];
-
-  //   const unfavoriteDogCount = unfavorited.length;
-  //   const favoriteDogCount = favorited.length;
+ 
   return (
     <section>
       <div className="container-header">
